@@ -355,23 +355,20 @@
                 </h4>
                 <div class="logos-lojas">
                     <div class="logo-lojas">
-                        <a href="https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY" onclick="fbq('track', 'Lead');"
-                            class="action-button" data-element="whatsapp-logos-marcas-ml"
-                            data-page="landing-promocenter">
+                        <a href="whatsapp.html" onclick="fbq('track', 'Lead');" class="action-button"
+                            data-element="whatsapp-logos-marcas-ml" data-page="landing-promocenter">
                             <img src="./mercadolivre-landing.webp" alt="Mercado Livre">
                         </a>
                     </div>
                     <div class="logo-lojas">
-                        <a href="https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY" onclick="fbq('track', 'Lead');"
-                            class="action-button" data-element="whatsapp-logos-marcas-shopee"
-                            data-page="landing-promocenter">
+                        <a href="whatsapp.html" onclick="fbq('track', 'Lead');" class="action-button"
+                            data-element="whatsapp-logos-marcas-shopee" data-page="landing-promocenter">
                             <img src="./shopee-landing.webp" alt="Shopee">
                         </a>
                     </div>
                     <div class="logo-lojas">
-                        <a href="https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY" onclick="fbq('track', 'Lead');"
-                            class="action-button" data-element="whatsapp-logos-marcas-amazon"
-                            data-page="landing-promocenter">
+                        <a href="whatsapp.html" onclick="fbq('track', 'Lead');" class="action-button"
+                            data-element="whatsapp-logos-marcas-amazon" data-page="landing-promocenter">
                             <img src="./amazon.webp" alt="Amazon">
                         </a>
                     </div>
@@ -382,8 +379,7 @@
             </div>
 
             <div class="buttons">
-                <a href="https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY" onclick="fbq('track', 'Lead');"
-                    class="btn-whats action-button">
+                <a href="whatsapp.html" onclick="fbq('track', 'Lead');" class="btn-whats action-button">
 
                     <svg viewBox="0 0 24 24" class="icon-whats" aria-hidden="true">
                         <path
@@ -407,39 +403,6 @@
             </p>
         </div>
     </main>
-
-    <!-- <footer class="footer">
-        © 2026 Promocenter. Todos os direitos reservados.
-    </footer> -->
-
-    <script>
-        const BASEAPI = 'https://promocenter-bot.criandoumamenterica.com.br/api';
-
-        fetch(`${BASEAPI}/track-visit`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                page: 'landing-promocenter-github'
-            })
-        });
-
-        document.querySelectorAll('.action-button').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                fetch(`${BASEAPI}/click`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        element: btn.dataset.element || 'whatsapp-button',
-                        page: btn.dataset.page || 'landing'
-                    })
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

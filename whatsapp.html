@@ -1,35 +1,434 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionando...</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" href="https://static.whatsapp.net/rsrc.php/v3/yz/r/ujTY9i_Jhs1.png">
+    <meta property="og:title" content="PROMOCENTER">
+    <meta property="og:site_name" content="WhatsApp.com">
+    <meta property="og:image"
+        content="https://storage.sendflow.pro/temp/resize-pictures/0356baa9-cab9-46b6-8ea4-3dc145b2b553_image@512x512.jpg">
+    <meta property="og:description" content="WhatsApp Group Invite">
+
+    <title>PROMOCENTER</title>
+    <meta name="description" content="WhatsApp Group Invite">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&amp;display=swap" rel="stylesheet">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    </noscript>
+    <style>
+        body {
+            margin: 5vh 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 95vh;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .logo img {
+            width: 200px;
+            aspect-ratio: 1;
+            background-color: #031e0d7c;
+            display: inline-block;
+            border-radius: 100%;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+
+        .notranslate {
+            unicode-bidi: isolate;
+        }
+
+        .actions {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 0 1px rgba(0, 255, 140, 0.5);
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .button-primary {
+            background-color: #90ee90;
+            color: #000;
+        }
+
+        .button-primary:hover {
+            background-color: #32cd32;
+        }
+
+        .button-secondary {
+            background-color: #f8f8f8;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+
+        .button-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        .note {
+            font-size: 0.75rem;
+            color: #3f3f3f;
+            text-align: center;
+            line-height: 0.5;
+        }
+
+        .note a {
+            color: #004b9b;
+            text-decoration: none;
+        }
+
+        .instructions {
+            display: none;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            margin-top: 40px;
+            border-radius: 0.5rem;
+        }
+
+        .instructions img {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 100%;
+            height: auto;
+            transform: translate(-50%, -40%);
+            animation: move-up-down 3.7s infinite;
+        }
+
+        @keyframes move-up-down {
+            0% {
+                transform: translate(-50%, -40%);
+            }
+
+            50% {
+                transform: translate(-50%, -70%);
+            }
+
+            100% {
+                transform: translate(-50%, -40%);
+            }
+        }
+
+        #popup {
+            position: fixed;
+            width: 60%;
+            max-width: 300px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f8f8f8;
+            color: black;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        #popup.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #qrcodepaint {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #qrcodepaint:hover {
+            cursor: pointer;
+            transform: scale(1.5) translateY(-10vh);
+            transition: transform 0.3s;
+            display: fixed;
+        }
+    </style>
+    <script async="" src="https://scripts.clarity.ms/0.8.62/clarity.js"></script>
+    <script id="qrcodejs" src="https://sendflow.pro/qrcode.js"></script>
 </head>
 
-<body>
+<body cz-shortcut-listen="true">
+    <main class="container">
+        <header class="logo">
+            <img src="promocenter-landing.webp"
+                width="200" height="200" alt="Imagem do grupo PROMOCENTER" onclick="enterGroup()">
+        </header>
 
-    <p>Redirecionando, aguarde...</p>
+        <section aria-labelledby="launch-title">
+            <h1 id="launch-title" class="title notranslate" onclick="enterGroup()">
+                PROMOCENTER
+            </h1>
 
+            <div class="actions">
+                <button class="button button-primary" aria-label="Entrar no grupo do WhatsApp"
+                    aria-describedby="group-info" autofocus="" onclick="enterGroup()"
+                    style="background-color: rgb(25, 87, 25); color: white;">
+                    Entrar
+                </button>
+
+                <div>
+                    <button class="button button-secondary" aria-label="Copiar o link do grupo para WhatsApp"
+                        aria-describedby="group-info"
+                        onclick="copyToClipboard('https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY')"
+                        style="background-color: rgba(51, 51, 51, 0); color: white; border: 1px solid rgb(51, 51, 51);">
+                        Copiar o link do grupo
+                    </button>
+
+                    <div id="group-info" class="note" style="color: rgb(204, 204, 204);">
+                        <p>Caso esteja com problemas para entrar no grupo,</p>
+                        <p>abra o WhatsApp e cole o link em uma conversa.</p>
+                        <p>Então clique no link para abrir direto no grupo.</p>
+                        <noscript>
+                            <p>Ative o JavaScript para uma melhor experiência.</p>
+                            <a href="https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY" target="_blank"
+                                rel="noopener noreferrer">
+                                Clique aqui para entrar no grupo.
+                            </a>
+                        </noscript>
+                        <a href="javascript:void(0)" onclick="loadQRCode()" style="color: rgb(79, 164, 255);">Você pode
+                            clicar aqui para ver o QRCode.</a>
+                    </div>
+                </div>
+
+                <div>
+                    <div id="qrcodepaint" title="https://sndflw.com/i/DnwsdHORk9QDvkFx0D5A#qr=x1"><canvas width="256"
+                            height="256" style="display: none;"></canvas><img
+                            src="data:image/png;base64,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"
+                            style="display: block;"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="instructions" hidden="">
+            <img src="https://a6kf983oje.ufs.sh/f/SjoA5X02zth5FGBGEiVgUpWatKv27TYNuVrjOPzo3iFm6S4X"
+                alt="Instruções para abrir o link" onclick="enterGroup()" loading="lazy"
+                onerror="this.onerror=null; this.src='https://sendflow.pro/instructions.webp';">
+        </div>
+
+        <div id="popup" aria-live="polite" hidden="">
+            Link copiado. Abra o WhatsApp e cole o link em uma conversa.
+        </div>
+    </main>
+    <script async="" src="https://www.clarity.ms/tag/nwfcoo34py"></script>
     <script>
-        const redirectUrl = 'https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY?mode=hqrt2';
-        const BASEAPI = 'https://promocenter-bot.criandoumamenterica.com.br/api';
-        // const BASEAPI = 'http://127.0.0.1:8000/api';
+        try {
+            setTimeout(() => (window.location.href = 'whatsapp://chat/?code=GUjaqIUEruR4RHeVv8ZSjY'), 0.01);
+        } catch (error) {
+            console.error('ECL');
+        }
 
-        fetch(`${BASEAPI}/click`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                element: 'auto-redirect',
-                page: 'redirect-whatsapp'
-            })
-        }).finally(() => {
-            window.location.href = redirectUrl;
-        });
+        setTimeout(() => window.location.replace('https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY'), 120_000);
+
+        const isInstagram = navigator.userAgent?.toLowerCase()?.includes('instagram');
+
+        if (isInstagram) {
+            window.isInstagram = true;
+            document.querySelector('.instructions').style.display = 'block';
+            document.querySelector('.instructions').removeAttribute('hidden');
+        }
+
+        (function (c, l, a, r, i, t, y) {
+            c[a] =
+                c[a] ||
+                function () {
+                    (c[a].q = c[a].q || []).push(arguments);
+                };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = 'https://www.clarity.ms/tag/' + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, 'clarity', 'script', 'nwfcoo34py');
+
+        function loadQRCode() {
+            function generateQRCode(texto) {
+                qrcodeContainer.onclick = () => {
+                    enterGroup();
+                };
+
+                qrcodeContainer.innerHTML = '';
+
+                new QRCode(qrcodeContainer, {
+                    text: texto,
+                    width: 256,
+                    height: 256,
+                    colorDark: '#000000',
+                    colorLight: '#ffffff',
+                });
+            }
+
+            const qrcodeContainer = document.getElementById('qrcodepaint');
+            if (qrcodeContainer.innerHTML) {
+                qrcodeContainer.innerHTML = '';
+                return;
+            }
+
+            if (document.getElementById('qrcodejs')) {
+                generateQRCode(window.location.href + '#qr=1');
+                cr('event', 'qr-q-2');
+                return;
+            }
+
+            const qrcodeScript = document.createElement('script');
+            qrcodeScript.id = 'qrcodejs';
+            qrcodeScript.src = 'https://sendflow.pro/qrcode.js';
+            document.head.appendChild(qrcodeScript);
+
+            qrcodeScript.onload = () => {
+                generateQRCode(window.location.href + '#qr=x1');
+
+                cr('event', 'qr');
+            };
+        }
+
+        const isMobile = navigator.userAgent?.toLowerCase()?.includes('mobi');
+
+        if (!isMobile) {
+            loadQRCode();
+        }
+
+        if (window.location?.search?.includes('debug')) {
+            const erudaScript = document.createElement('script');
+            erudaScript.src = 'https://cdn.jsdelivr.net/npm/eruda';
+            document.head.appendChild(erudaScript);
+            erudaScript.onload = () => eruda.init();
+
+            cr('event', 'debug');
+
+            // Cria um prompt de sim ou não
+            const prompt = window.confirm('Deseja entrar no grupo?');
+            if (prompt) {
+                window.location.href =
+                    'whatsapp://send?phone=5588981222297&text=Link%3A%0A%2Froqtgroup%2Fposts%2Fpfbid0TFdBB2GU3rKMG7jYQ54NCoinppmQApoGF87PhL383eeeg7qZiaoVws8c1JXENHQel%0A%0AOl%C3%A1%21+Tenho+interesse+e+queria+mais+informa%C3%A7%C3%B5es%2C+por+favor.&source_url=%2Froqtgroup%2Fposts%2Fpfbid0TFdBB2GU3rKMG7jYQ54NCoinppmQApoGF87PhL383eeeg7qZiaoVws8c1JXENHQel&icebreaker=Ol%C3%A1%21+Tenho+interesse+e+queria+mais+informa%C3%A7%C3%B5es%2C+por+favor.&app=instagram&entry_point=ctwa_ad&jid=0000000000000%40s.whatsapp.net&show_keyboard=1&show_ad_attribution=1&source=FB_Ads';
+            }
+        }
+
+        function cr(t, ld, d) {
+            if (!window.clarity) return;
+            if (!d) return window.clarity(t, ld);
+            window.clarity(t, ld, d);
+        }
+
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.removeAttribute('hidden');
+            popup.classList.add('show');
+
+            setTimeout(() => popup.classList.remove('show'), 10_000);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard
+                .writeText(text)
+                .then(() => {
+                    if (navigator.vibrate) {
+                        navigator.vibrate([30, 20, 30]);
+                        cr('event', 'vibrate');
+                    }
+                    showPopup();
+                    cr('event', 'copyLink');
+                })
+                .catch(err => console.error('ECL', err));
+        }
+
+        window.addEventListener('beforeunload', () => cr('event', 'leavePage'));
+
+        function enterGroup() {
+            const isPC = window.innerWidth > 1024;
+
+            const url = isPC
+                ? 'https://web.whatsapp.com/accept?code=GUjaqIUEruR4RHeVv8ZSjY'
+                : 'https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY';
+
+            window.location.href = 'whatsapp://chat/?code=GUjaqIUEruR4RHeVv8ZSjY';
+            setTimeout(() => (window.location.href = url), 500);
+
+            cr('event', 'enterGroup');
+            cr('set', 'ua', navigator.userAgent || 'unknown');
+            window.isInstagram && cr('event', 'ig');
+            window.isDarkMode && cr('event', 'darkMode');
+            cr('set', 'browserLang', navigator.language || 'unknown');
+        }
+
+        function isNight() {
+            const now = new Date();
+            const hour = now.getHours();
+
+            if (hour >= 6 && hour < 18) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function isDark() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        if (isDark() && isNight()) {
+            document.body.style.backgroundColor = 'black';
+            document.body.style.color = 'white';
+            document.querySelector('.button-primary').style.backgroundColor = '#195719';
+            document.querySelector('.button-primary').style.color = 'white';
+            document.querySelector('.button-secondary').style.backgroundColor = '#3330';
+            document.querySelector('.button-secondary').style.color = 'white';
+            document.querySelector('.button-secondary').style.border = '1px solid #333';
+
+            document.querySelector('.note').style.color = '#ccc';
+            document.querySelector('.note a').style.color = '#4fa4ff';
+
+            window.isDarkMode = true;
+        }
     </script>
-
 </body>
 
 </html>
