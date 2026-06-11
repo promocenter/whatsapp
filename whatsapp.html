@@ -6,15 +6,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <link rel="icon" href="https://static.whatsapp.net/rsrc.php/v3/yz/r/ujTY9i_Jhs1.png">
     <meta property="og:title" content="PROMOCENTER">
     <meta property="og:site_name" content="WhatsApp.com">
     <meta property="og:image"
-        content="https://storage.sendflow.pro/temp/resize-pictures/0356baa9-cab9-46b6-8ea4-3dc145b2b553_image@512x512.jpg">
+        content="./promocenter-landing.webp">
     <meta property="og:description" content="WhatsApp Group Invite">
 
-    <title>PROMOCENTER</title>
+    <title>Entrar no grupo</title>
     <meta name="description" content="WhatsApp Group Invite">
+    <link rel="shortcut icon" href="./promocenter-landing.webp" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -195,13 +195,13 @@
 <body cz-shortcut-listen="true">
     <main class="container">
         <header class="logo">
-            <img src="promocenter-landing.webp"
-                width="200" height="200" alt="Imagem do grupo PROMOCENTER" onclick="enterGroup()">
+            <img src="./promocenter-logo-whatsapp.webp"
+                width="200" height="200" alt="Imagem do grupo Promocenter" onclick="enterGroup()">
         </header>
 
         <section aria-labelledby="launch-title">
             <h1 id="launch-title" class="title notranslate" onclick="enterGroup()">
-                PROMOCENTER
+                Promocenter
             </h1>
 
             <div class="actions">
@@ -215,11 +215,11 @@
                     <button class="button button-secondary" aria-label="Copiar o link do grupo para WhatsApp"
                         aria-describedby="group-info"
                         onclick="copyToClipboard('https://chat.whatsapp.com/GUjaqIUEruR4RHeVv8ZSjY')"
-                        style="background-color: rgba(51, 51, 51, 0); color: white; border: 1px solid rgb(51, 51, 51);">
+                        style="background-color: rgba(51, 51, 51, 0); color: black; border: 1px solid rgb(51, 51, 51);">
                         Copiar o link do grupo
                     </button>
 
-                    <div id="group-info" class="note" style="color: rgb(204, 204, 204);">
+                    <div id="group-info" class="note" style="color: rgb(0, 0, 0);">
                         <p>Caso esteja com problemas para entrar no grupo,</p>
                         <p>abra o WhatsApp e cole o link em uma conversa.</p>
                         <p>Então clique no link para abrir direto no grupo.</p>
@@ -414,7 +414,7 @@
             }
         }
 
-        if (isDark() && isNight()) {
+        if (isDark() && !isNight()) {
             document.body.style.backgroundColor = 'black';
             document.body.style.color = 'white';
             document.querySelector('.button-primary').style.backgroundColor = '#195719';
